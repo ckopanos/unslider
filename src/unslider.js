@@ -115,6 +115,11 @@
 				el.on('swipeleft swiperight swipeLeft swipeRight', function(e) {
 					e.type.toLowerCase() == 'swipeleft' ? _.next() : _.prev();
 				});
+				el.on('movestart', function(e) {
+  					if ((e.distX > e.distY && e.distX < -e.distY) || (e.distX < e.distY && e.distX > -e.distY)) {
+    						e.preventDefault();
+  					}
+				});
 			};
 
 			return _;
